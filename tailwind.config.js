@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      'sans': ['Montserrat'],
+      'sans': ['Manrope'],
     },
     backgroundImage: {
       'sie': "url('/banner-aprov.jpg')"
@@ -27,11 +27,12 @@ export default {
 
       },
       'aprov': {
-        DEFAULT: '#EB5E28',
-        100: '#FFFCF2',
-        200: '#CCC5B9',
-        300: '#403D39',
-        500: '#252422',
+        DEFAULT: '#EB5E28', // Flame
+        50: '#F3EFE4', // Alabaster (pre-hovers)
+        100: '#FFFCF2', // Floral white
+        200: '#CCC5B9', // Timberwolf (hovers)
+        300: '#403D39', // Black olive
+        500: '#252422', // Eerie black
       },
       'interface': {
         'sucess': '#228B22',

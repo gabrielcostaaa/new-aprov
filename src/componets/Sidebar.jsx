@@ -1,48 +1,54 @@
-import React from 'react'
+import React, { Children, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { User, Search, CheckCircle, FileText, LogOut } from 'lucide-react'
+import { ChevronFirst, ChevronLast, User, Search, CheckCircle, FileText, LogOut } from 'lucide-react'
 
 
-const Sidebar = () => {
+const Sidebar = ({children}) => {
+  const [expanded, setExpanded] = useState(true)
   return (
-    <div className="w-64 h-screen bg-aprov-100 text-aprov-500 z-20">
-      <div className="flex justify-center p-5">
-      <img src="/3.png" alt="Logo" className="w-44 h-full "/>
-      </div>
-      <ul className="mt-6">
-        <li className="p-4 hover:bg-cinzaEscuro hover:text-branco font-montserrat duration-300 cursor-pointer text-preto">
-          <Link to="/usuarios" className="flex items-center">
-            <User size={24} className="mr-2" />
-            <span>Cadastros</span>
-          </Link>
-        </li>
-        <li className="p-4 hover:bg-cinzaEscuro hover:text-branco font-montserrat duration-300 cursor-pointer text-preto">
-          <Link to="/consulta-previa" className="flex items-center">
-            <Search size={24} className="mr-2" />
-            <span>Consulta prévia</span>
-          </Link>
-        </li>
-        <li className="p-4 hover:bg-cinzaEscuro hover:text-branco font-montserrat duration-300 cursor-pointer text-preto">
-          <Link to="/analise-aprovacao" className="flex items-center">
-            <CheckCircle size={24} className="mr-2" />
-            <span>Análise e aprovação</span>
-          </Link>
-        </li>
-        <li className="p-4 hover:bg-cinzaEscuro hover:text-branco font-montserrat duration-300 cursor-pointer text-preto">
-          <Link to="/emissao-documentos" className="flex items-center">
-            <FileText size={24} className="mr-2" />
-            <span>Emissão de documentos</span>
-          </Link>
-        </li>
-        <li className="p-4 hover:bg-cinzaEscuro font-montserrat duration-300 cursor-pointer text-laranja mt-auto">
-          <Link to="/logout" className="flex items-center">
-            <LogOut size={24} className="mr-2"/>
-            <span>Sair</span>
-          </Link>
-        </li>
-      </ul>
-    </div>
+    <aside className='h-screen'>
+      <nav className='h-full w-64 flex flex-col bg-white shadow-lg shadow-gray'>
+        <div className='p-6 pb-2 flex justify-between items-center'>
+        <img 
+        src="/5.png" 
+        alt="" 
+        className={`overflow-hidden transition-all ${expanded ? "w-10" : "w-0"}`}/>
+        <img 
+        src="/4.png" 
+        alt="Logo" 
+        className={`overflow-hidden transition-all ${expanded ? "w-24" : "w-0"}`}/>
+        <button onClick={() => setExpanded(aux => !aux)} className=' p-1.5 rounded-lg bg-aprov-50 text-aprov-500 hover:bg-aprov-200'>
+          {expanded ? <ChevronFirst/> : <ChevronLast/>}
+        </button>
+        </div>
+
+        <ul className='flex-1 px-3'>{ children }</ul>
+
+
+      </nav>
+
+    </aside>
+
   )
 }
+
+export function SidebarItem({ icon, text, active, alert }) {
+  return (
+    <li
+      className={`
+        relative flex items-center py-2 px-3 my-4 font-medium rounded-md cursor-pointer 
+        transition-colors
+        ${active ? 'bg-aprov-500 text-aprov-50' : 'hover:bg-aprov-50 hover:text-aprov-500'}
+      `}
+    >
+      {icon}
+      <span className="w-52 ml-3">{text}</span>
+      {alert && (
+        <div className="absolute right-2 w-1.5 h-1.5 rounded bg-aprov"></div>
+      )}
+    </li>
+  );
+}
+
 
 export default Sidebar

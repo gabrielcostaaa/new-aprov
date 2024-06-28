@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Outlet } from "react-router-dom"
 import UserList from './componets/UserList'
-import Sidebar from './componets/Sidebar'
+import Sidebar, { SidebarItem } from './componets/Sidebar'
+import { LayoutDashboard, FileSearch, PencilRuler, HardHat, ShieldPlus, HousePlus, LogOut, Users } from 'lucide-react'
 import axios from 'axios'
 import './App.css'
 
@@ -25,7 +26,44 @@ function App() {
 return (
   <div className=''>
     <Outlet />
-    <Sidebar />
+    <Sidebar>
+      <SidebarItem
+        icon={<LayoutDashboard size={30}/>}
+        text="Menu Principal"
+        active
+      />
+      <SidebarItem
+        icon={<FileSearch size={30}/>}
+        text="Consulta Prévia"
+        alert
+      />
+      <SidebarItem
+        icon={<PencilRuler size={30}/>}
+        text="Análise de Projetos"
+      />
+      <SidebarItem
+        icon={<HardHat size={30}/>}
+        text="Alvará de Construção"
+        alert
+      />
+      <SidebarItem
+        icon={<ShieldPlus size={30}/>}
+        text="Vigilância Sanitária"
+      />
+      <SidebarItem
+        icon={<HousePlus size={30}/>}
+        text="Habite-se"
+      />
+      <hr className='my-6 border-aprov-50'/>
+      <SidebarItem
+        icon={<Users size={30}/>}
+        text="Cadastros"
+      />
+      <SidebarItem
+        icon={<LogOut size={30}/>}
+        text="Sair"
+      />
+    </Sidebar>
   </div>
 
 );
