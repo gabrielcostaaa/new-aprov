@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Outlet } from "react-router-dom"
-import UserList from './componets/UserList'
-import Sidebar, { SidebarItem } from './componets/Sidebar'
+import UserList from './components/UserList'
+import Sidebar, { SidebarItem } from './components/Sidebar'
+import Navbar from './components/Navbar'
 import { LayoutDashboard, FileSearch, PencilRuler, HardHat, ShieldPlus, HousePlus, LogOut, Users } from 'lucide-react'
 import axios from 'axios'
-import './App.css'
 
 const api = axios.create({
   baseURL: 'http://localhost:3333'
@@ -24,8 +24,7 @@ function App() {
 // }, [])
 
 return (
-  <div className=''>
-    <Outlet />
+  <div className='bg-aprov-50 flex'>
     <Sidebar>
       <SidebarItem
         icon={<LayoutDashboard size={30}/>}
@@ -64,6 +63,8 @@ return (
         text="Sair"
       />
     </Sidebar>
+    <Navbar/>
+    <Outlet />
   </div>
 
 );
