@@ -24,7 +24,7 @@ function App() {
 // }, [])
 
 return (
-  <div className='bg-aprov-50 flex'>
+  <div className='bg-aprov-50 flex h-screen'>
     <Sidebar>
       <SidebarItem
         icon={<LayoutDashboard size={30}/>}
@@ -63,7 +63,9 @@ return (
         text="Sair"
       />
     </Sidebar>
+    <div className='flex-none'>
     <Navbar/>
+    </div>
     <Outlet />
   </div>
 
